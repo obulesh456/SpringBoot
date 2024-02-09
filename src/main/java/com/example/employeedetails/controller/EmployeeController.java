@@ -19,5 +19,8 @@ public class EmployeeController {
     private List<Employee> findEmployees(){
         return employeeService.getEmployees();
     }
-
+    @DeleteMapping("/employee/{id}")
+    private void deleteEmployee(@PathVariable("id") Integer id){
+         employeeService.deleteEmployee(id);
+    }
 }

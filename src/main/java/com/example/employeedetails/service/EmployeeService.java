@@ -18,4 +18,7 @@ public class EmployeeService {
     public List<Employee> getEmployees(){
         return employeeRepo.findAll();
     }
+    public void deleteEmployee(Integer id){
+         employeeRepo.deleteById(id);
+    }
 }
