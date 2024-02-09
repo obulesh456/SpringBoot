@@ -11,20 +11,29 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
+
     @PostMapping("/createEmployee")
-    private Employee createEmployee(@RequestBody Employee emp){
+    private Employee createEmployee(@RequestBody Employee emp) {
         return employeeService.saveEmployee(emp);
     }
+
     @GetMapping("/getEmployees")
-    private List<Employee> findEmployees(){
+    private List<Employee> findEmployees() {
         return employeeService.getEmployees();
     }
+
     @DeleteMapping("/employee/{id}")
-    private void deleteEmployee(@PathVariable("id") Integer id){
-         employeeService.deleteEmployee(id);
+    private void deleteEmployee(@PathVariable("id") Integer id) {
+        employeeService.deleteEmployee(id);
     }
+
     @GetMapping("/employee/{id}")
-    private Employee findEmployeeById(@PathVariable("id") Integer id){
+    private Employee findEmployeeById(@PathVariable("id") Integer id) {
         return employeeService.getEmployeeById(id);
+    }
+
+    @PutMapping("/employee/{id}")
+    private Employee updateEmployee(@PathVariable("id") Integer id, @RequestBody Employee emp) {
+        return employeeService.updateEmployeeById(id, emp);
     }
 }
