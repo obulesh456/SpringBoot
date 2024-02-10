@@ -6,22 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-import static jakarta.persistence.CascadeType.ALL;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private Double salary;
-    @OneToMany(cascade = ALL, orphanRemoval = true)
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private List<Address> addresses;
+    private String city;
+    private Integer pin;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Employee employee;
+
 }
